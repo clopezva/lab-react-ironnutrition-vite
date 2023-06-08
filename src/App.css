@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card{
+  border: 2px solid black;
+  margin: 10px;
+}
+
+.card img{
+  height: 100px;
+}
