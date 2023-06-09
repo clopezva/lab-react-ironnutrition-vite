@@ -33,15 +33,13 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
+
 
 .read-the-docs {
   color: #888;
 }
 
-.card-container{
+/* .card-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -54,6 +52,7 @@
 .card img{
   height: 100px;
 }
+
 
 .form-container{
   display: flex;
