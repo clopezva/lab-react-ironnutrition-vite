@@ -25,7 +25,10 @@ export default function FoodList() {
     setSearchValue(keyword);
     console.log(keyword);
     // Utiliza adecuadamente el método filter para actualizar el array de foods que contengan la subcadena de texto de e.target.value
-    const filteredFoods = foods.filter((f) => f.name.includes(keyword));
+    //const filteredFoods = foods.filter((f) => f.name.includes(keyword));
+    const filteredFoods = foodsJson.filter((f) =>
+      new RegExp(keyword, "i").test(f.name)
+    );
     setFoods(filteredFoods);
   }
 
@@ -35,9 +38,13 @@ export default function FoodList() {
       <Search value={searchValue} onSearchChange={handleSearchFoods} />
       <Row style={{ width: "100%", justifyContent: "center" }}>
         {/** Iterate over the foods array and render a <FoodBox /> component for each individual food item. */}
-        {foods.map((f) => (
-          <FoodBox foods={f} key={f.id} onDelete={handleDelete} />
-        ))}
+        {foods.length === 0 ? (
+          <h2>No food match search criteria...</h2>
+        ) : (
+          foods.map((f) => (
+            <FoodBox foods={f} key={f.id} onDelete={handleDelete} />
+          ))
+        )}
       </Row>
     </>
   );
