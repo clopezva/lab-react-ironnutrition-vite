@@ -8,6 +8,7 @@ import Search from "./Search";
 
 export default function FoodList() {
   const [foods, setFoods] = useState([...foodsJson]);
+  const [searchValue, setSearchValue] = useState("");
 
   function handleDelete(id) {
     setFoods(foods.filter((f) => f.id !== id));
@@ -17,10 +18,21 @@ export default function FoodList() {
     //console.log("Nueva comida", createdFood);
     setFoods([createdFood, ...foods]);
   }
+
+  function handleSearchFoods(e) {
+    // Cada vez que se ejecuta esta función, es que ha cambiado el valor del input search
+    let keyword = e.target.value;
+    setSearchValue(keyword);
+    console.log(keyword);
+    // Utiliza adecuadamente el método filter para actualizar el array de foods que contengan la subcadena de texto de e.target.value
+    const filteredFoods = foods.filter((f) => f.name.includes(keyword));
+    setFoods(filteredFoods);
+  }
+
   return (
     <>
       <AddFoodForm onCreateFood={handleCreateFood} />
-      <Search />
+      <Search value={searchValue} onSearchChange={handleSearchFoods} />
       <Row style={{ width: "100%", justifyContent: "center" }}>
         {/** Iterate over the foods array and render a <FoodBox /> component for each individual food item. */}
         {foods.map((f) => (

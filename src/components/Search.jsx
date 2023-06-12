@@ -1,12 +1,17 @@
 import { Divider, Input } from "antd";
 
-function Search() {
+function Search({ value, onSearchChange }) {
   return (
     <>
       <Divider>Search</Divider>
 
       <label>Search</label>
-      <Input name="search" value={undefined} type="text" onChange={() => {}} />
+      <Input
+        name="search"
+        value={value}
+        type="text"
+        onChange={onSearchChange}
+      />
     </>
   );
 }
